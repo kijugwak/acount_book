@@ -4,7 +4,6 @@ from django.shortcuts import redirect
 from .models import User
 
 # Create your views here.
-
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
