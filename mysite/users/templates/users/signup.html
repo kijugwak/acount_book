@@ -1,22 +1,31 @@
 회원가입 페이지
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body style="text-align: center; background-color: black; color:white;">
+    <form action=" " method="POST">
+        {% csrf_token %}
+        <p>아이디</p>
+        <input name ="username" type="text">
+        <p>비밀번호</p>
+        <input name = "password" type="password">
+        <p>성</p>
+        <input name = "firstname" type="text">
+        <p>이름</p>
+        <input name = "lastname" type="text">
+        <p>이메일</p>
+        <input name = "email" type="text">
+        <p>나이</p>
+        <input name="student_id" type="text">
+        <p>자산</p>
+        <input name="my_money" type="number">
+        <input type="submit" value ="회원가입">
+    </form>    
+</body>
+</html>
 
-<br>
-
-<form action=" " method="POST">
-    {% csrf_token %}
-    <p>아이디</p>
-    <input name ="username" type="text">
-    <p>비밀번호</p>
-    <input name = "password" type="password">
-    <p>성</p>
-    <input name = "firstname" type="text">
-    <p>이름</p>
-    <input name = "lastname" type="text">
-    <p>이메일</p>
-    <input name = "email" type="text">
-    <p>나이</p>
-    <input name="student_id" type="text">
-    <p>현재 자산</p>
-    <input name="my_money" type="number">
-    <input type="submit" value ="회원가입">
-</form>

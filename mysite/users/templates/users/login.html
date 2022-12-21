@@ -1,34 +1,47 @@
-<br>
-{% if user.is_authenticated %}
-    로그인 성공!
-    {{ user.username }}님 환영합니다.
-</br>
-<br>
-    {{ user.username }}님의 통장 잔액은 {{user.my_money}}원
-</br>
-<br>
-    사용한 금액은 {{user.use_money}}원
-</br>
-<br>
-    추가된 금액은 {{user.add_money}}
-</br>
-<br>
-    남은 금액은 {{user.final_money}}원 입니다)
-</br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align:center; color:white; background-color: black;">
+    <br>
+    {% if user.is_authenticated %}
+        로그인 성공!
+        {{ user.username }}님 환영합니다.
+    </br>
+    <br>
+        {{ user.username }}님의 통장 잔액은 {{user.my_money}}원
+    </br>
+    <br>
+        사용한 금액은 {{user.use_money}}원
+    </br>
+    <br>
+        추가된 금액은 {{user.add_money}}
+    </br>
+    <br>
+        남은 금액은 {{user.final_money}}원 입니다)
+    </br>
+
     
 
 
     <a href="{% url 'user:logout' %}">로그아웃</a>
-{% else %}
+    {% else %}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    <input name="username" type="text"> 아이디
-    <input name="password" type="password"> 비밀번호
-    <input name="use_money" type="number"> 사용한 금액
-    <input name="add_money" type="number"> 추가될 금액
-    <input type="submit" value="로그인">
-</form>
-<a href="{% url 'user:signup' %}">회원가입</a>
+    <form action="" method="POST" style="text-align: center;">
+        {% csrf_token %}
+        <input name="username" type="text"> 아이디
+        <input name="password" type="password"> 비밀번호
+        <input name="use_money" type="number"> 사용한 금액
+        <input name="add_money" type="number"> 추가될 금액
+        <input type="submit" value="로그인">
+    </form>
+    <a href="{% url 'user:signup' %}">회원가입</a>
 
-{% endif %}
+    {% endif %}
+    
+</body>
+</html>

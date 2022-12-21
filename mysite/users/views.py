@@ -7,6 +7,9 @@ from .models import User
 # my_money = 0
 # Create your views here.
 
+def main_site(request):
+    return render(request, "users/main.html")
+
 
 def signup_view(request):
     try:
@@ -44,8 +47,8 @@ def login_view(request):
         for i in user_name:
             if username in i:
                 nn.append(i)
-        for nnn in nn:
-            my_money = int(nnn[-1])
+        for final in nn:
+            my_money = int(final[-1])
         if user is not None:
             print("인증성공")
             final_money = str(my_money - int(use_money) + int(add_money))
