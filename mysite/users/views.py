@@ -3,27 +3,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from .models import User
 
+# global my_money
+# my_money = 0
 # Create your views here.
-def login_view(request):
-    if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            print("인증성공")
-            login(request, user)
-        else:
-            print("인증실패")
-    return render(request, "users/login.html")
 
-def logout_view(request):
-    logout(request)
-    return redirect("user:login")
 
 def signup_view(request):
     try:
         if request.method == "POST":
-            print(request.POST)
             username = request.POST["username"]
             password = request.POST["password"]
             firstname = request.POST["firstname"]
@@ -43,3 +30,33 @@ def signup_view(request):
         return render(request, "users/error.html")
 
     return render(request, "users/signup.html")
+
+def login_view(request):
+    nn =[]
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        use_money = request.POST["use_money"]
+        user = authenticate(username=username, password=password)
+        # user_money = User.objects.values('username')
+        user_name = User.objects.values_list()
+        for i in user_name:
+            if username in i:
+                nn.append(i)
+        for nnn in nn:
+            my_money = int(nnn[-1])
+        if user is not None:
+            print("인증성공")
+            final_money = str(my_money - int(use_money))
+            user.use_money = use_money
+            user.final_money = final_money
+            user.my_money = final_money
+            user.save()
+            login(request, user)
+        else:
+            print("인증실패")
+    return render(request, "users/login.html")
+
+def logout_view(request):
+    logout(request)
+    return redirect("user:login")
