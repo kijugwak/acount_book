@@ -4,7 +4,6 @@
 {% if user.is_authenticated %}
     로그인 성공!
     {{ user.username }}님 환영합니다.
-    <a href="">회원가입</a>
     <a href="{% url 'user:logout' %}">로그아웃</a>
 {% else %}
 
@@ -14,5 +13,6 @@
     <input name="password" type="password">
     <input type="submit" value="로그인">
 </form>
+<a href="{% url 'user:signup' %}">회원가입</a>
 
 {% endif %}
