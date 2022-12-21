@@ -10,6 +10,9 @@
     사용한 금액은 {{user.use_money}}원
 </br>
 <br>
+    추가된 금액은 {{user.add_money}}
+</br>
+<br>
     남은 금액은 {{user.final_money}}원 입니다)
 </br>
     
@@ -23,6 +26,7 @@
     <input name="username" type="text"> 아이디
     <input name="password" type="password"> 비밀번호
     <input name="use_money" type="number"> 사용한 금액
+    <input name="add_money" type="number"> 추가될 금액
     <input type="submit" value="로그인">
 </form>
 <a href="{% url 'user:signup' %}">회원가입</a>

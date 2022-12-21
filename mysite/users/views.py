@@ -37,6 +37,7 @@ def login_view(request):
         username = request.POST["username"]
         password = request.POST["password"]
         use_money = request.POST["use_money"]
+        add_money = request.POST["add_money"]
         user = authenticate(username=username, password=password)
         # user_money = User.objects.values('username')
         user_name = User.objects.values_list()
@@ -47,10 +48,11 @@ def login_view(request):
             my_money = int(nnn[-1])
         if user is not None:
             print("인증성공")
-            final_money = str(my_money - int(use_money))
+            final_money = str(my_money - int(use_money) + int(add_money))
             user.use_money = use_money
             user.final_money = final_money
             user.my_money = final_money
+            user.add_money = add_money
             user.save()
             login(request, user)
         else:
