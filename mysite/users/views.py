@@ -30,11 +30,12 @@ def signup_view(request):
             lastname = request.POST["lastname"]
             email = request.POST["email"]
             student_id = request.POST["student_id"]
-
+            my_money = request.POST["my_money"]
             user = User.objects.create_user(username, email, password)
             user.last_name = lastname
             user.first_name = firstname
             user.student_id = student_id
+            user.my_money = my_money
             user.save()
 
             return redirect("user:login")
